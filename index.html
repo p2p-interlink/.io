@@ -1,86 +1,48 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>InterLink — Digital Assets & P2P</title>
-<style>
-:root {
-  --bg: #ffffff;
-  --surface: #f8f9fc;
-  --surface2: #f0f3fa;
-  --text: #111827;
-  --muted: #6b7280;
-  --line: #e5e7eb;
-  --purple: #6366f1;
-  --purple-light: #818cf8;
-  --green: #22c55e;
-  --radius: 20px;
-  --max: 1180px;
-}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.5}
-a{color:inherit;text-decoration:none}
-.wrap{width:min(var(--max),calc(100% - 32px));margin:auto}
-.site-header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav{height:70px;display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px}
-.brand-icon{width:32px;height:32px;background:linear-gradient(135deg,#818cf8,#6366f1);border-radius:10px;display:grid;place-items:center;color:#fff;font-weight:900}
-.btn-primary{background:var(--purple);color:#fff;border:0;padding:10px 20px;border-radius:999px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
-.btn-primary:hover{background:#4f46e5}
-.hero{padding:40px 0;text-align:center;position:relative;min-height:80vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#f5f3ff 0%,#ffffff 100%)}
-.hero-content{max-width:680px;margin:auto}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:8px 16px;border-radius:999px;box-shadow:0 4px 12px rgba(0,0,0,.05);margin-bottom:24px;cursor:pointer;font-weight:600;color:#15803d;text-decoration:none}
-.badge-dot{width:12px;height:12px;background:#eab308;border-radius:50%}
-.hero h1{font-size:clamp(32px,5vw,52px);line-height:1.2;margin:0 0 16px;letter-spacing:-.03em;color:#111827}
-.hero p{color:var(--muted);font-size:18px;margin:0 0 32px}
-.location-tag{position:absolute;top:20px;right:20px;background:rgba(0,0,0,.6);color:#fff;padding:6px 14px;border-radius:999px;font-size:13px;backdrop-filter:blur(4px)}
-.trust-section{padding:60px 0;text-align:center;border-top:1px solid var(--line)}
-.trust-section h3{color:var(--purple);font-size:24px;margin:0 0 8px}
-.trust-section p{color:var(--muted);margin:0 0 32px}
-.trust-grid{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;color:var(--muted);font-weight:700;font-size:14px}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smooth InterLink | BEP20 Ecosystem</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-900 text-white min-h-screen flex flex-col justify-between font-sans">
 
-<header class="site-header">
-  <div class="wrap nav">
-    <a class="brand" href="index.html">
-      <div class="brand-icon">i</div>
-      <span>InterLink</span>
-    </a>
-    <!-- Relative URL to mine.html -->
-    <a href="mine.html" class="btn-primary">Get the app</a>
-  </div>
-</header>
+    <!-- Header / Navbar -->
+    <header class="p-5 bg-gray-800 border-b border-gray-700 flex justify-between items-center">
+        <h1 class="text-2xl font-bold tracking-wide text-yellow-500">Smooth <span class="text-white text-sm">BEP20</span></h1>
+        <nav class="space-x-4">
+            <a href="index.html" class="hover:text-yellow-400 text-yellow-400 font-semibold">Home</a>
+            <a href="mine.html" class="hover:text-yellow-400">Mine $ITLG</a>
+            <a href="validate.html" class="hover:text-yellow-400">Validate</a>
+        </nav>
+    </header>
 
-<main>
-  <section class="hero">
-    <div class="location-tag">🇳🇬 Onitsha, Nigeria</div>
-    <div class="hero-content">
-      <!-- Relative link triggers mine.html page -->
-      <a class="hero-badge" href="mine.html">
-        <span class="badge-dot"></span>
-        <span>$ITL Activate Marketplace</span>
-      </a>
-      <h1>Activating Marketplace on your Interlink Wallet allows you to securely trade your ITG assets with other, using Interlink Escrow services</h1>
-      <div style="margin-top:28px">
-        <a href="mine.html" class="btn-primary" style="padding:14px 32px;font-size:16px;background:#111827;text-decoration:none">Download</a>
-      </div>
-    </div>
-  </section>
+    <!-- Hero Section -->
+    <main class="flex-grow flex flex-col items-center justify-center text-center p-6">
+        <h2 class="text-4xl md:text-6xl font-extrabold mb-4">Welcome to Smooth InterLink</h2>
+        <p class="text-gray-400 max-w-xl text-lg mb-8">
+            Decentralized ecosystem running on the Binance Smart Chain (BEP20). Mine $ITLG, interact with live dashboard metrics, and manage your assets seamlessly.
+        </p>
+        <div class="flex space-x-4">
+            <a href="mine.html" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-6 rounded-xl shadow-lg transition">
+                Launch App & Mine ↗
+            </a>
+            <a href="validate.html" class="bg-gray-800 border border-gray-700 hover:bg-gray-700 font-bold py-3 px-6 rounded-xl transition">
+                Connect Wallet
+            </a>
+        </div>
+    </main>
 
-  <section class="trust-section">
-    <div class="wrap">
-      <h3>Institutional Credibility</h3>
-      <p>Trusted by the world's best.<br><span style="font-size:14px;color:#9ca3af">Independently verified by the institutions that define global standards.</span></p>
-      <div class="trust-grid">
-        <div>NEW TO THE STREET</div>
-        <div>AWS Startups</div>
-      </div>
-    </div>
-  </section>
-</main>
+    <!-- Footer -->
+    <footer class="p-6 bg-gray-800 border-t border-gray-700 text-center text-gray-400 text-sm">
+        <div class="flex justify-center space-x-6 mb-3">
+            <a href="javascript:void(0)" class="hover:underline">Privacy Policy</a>
+            <a href="javascript:void(0)" class="hover:underline">Terms of Service</a>
+            <a href="javascript:void(0)" class="hover:underline">Cookie Policy</a>
+        </div>
+        <p>&copy; 2026 Smooth InterLink (BEP20 BSC Network). All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
