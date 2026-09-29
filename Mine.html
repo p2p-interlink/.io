@@ -19,7 +19,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-appl
 .wrap{padding:16px;max-width:500px;margin:auto}
 .top-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
 .tab-switch{background:#eaeef8;padding:4px;border-radius:999px;display:flex;gap:4px}
-.tab-btn{padding:8px 24px;border-radius:999px;border:0;font-weight:700;font-size:14px;cursor:pointer;background:transparent;color:var(--muted)}
+.tab-btn{padding:8px 24px;border-radius:999px;border:0;font-weight:700;font-size:14px;cursor:pointer;background:transparent;color:var(--muted);text-decoration:none}
 .tab-btn.active{background:#fff;color:var(--text);box-shadow:0 2px 6px rgba(0,0,0,.08)}
 .icon-btn{width:38px;height:38px;border-radius:50%;background:#eee;border:0;display:grid;place-items:center;font-weight:bold;cursor:pointer}
 .greeting{font-size:28px;font-weight:800;margin:0 0 16px;letter-spacing:-.02em}
@@ -33,7 +33,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-appl
 .stat-num{font-size:24px;font-weight:800;margin-bottom:4px}
 .stat-label{font-size:12px;color:var(--muted);font-weight:600}
 .mine-card{background:var(--card-bg);border-radius:24px;padding:20px;border:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
-.btn-gold{background:linear-gradient(135deg,#facc15,#eab308);color:#000;border:0;padding:12px 24px;border-radius:999px;font-weight:800;font-size:15px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.btn-gold{background:linear-gradient(135deg,#facc15,#eab308);color:#000;border:0;padding:12px 24px;border-radius:999px;font-weight:800;font-size:15px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;text-decoration:none}
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:12px 0}
 .nav-item{color:var(--muted);font-size:20px;cursor:pointer;text-decoration:none}
 .nav-item.active{color:var(--text);font-weight:bold}
@@ -45,8 +45,9 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-appl
   <div class="top-nav">
     <div style="width:32px;height:32px;background:var(--purple);border-radius:10px;display:grid;place-items:center;color:#fff;font-weight:900">i</div>
     <div class="tab-switch">
-      <button class="tab-btn active">App</button>
-      <button class="tab-btn" onclick="window.location.href='validate.html'">Wallet</button>
+      <span class="tab-btn active">App</span>
+      <!-- Relative link to validate.html -->
+      <a class="tab-btn" href="validate.html">Wallet</a>
     </div>
     <button class="icon-btn">👤</button>
   </div>
@@ -76,7 +77,8 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-appl
   <div class="mine-card">
     <div>
       <h3 style="margin:0 0 12px;font-size:18px;max-width:180px">Mine $ITLG to Secure the Human Network!</h3>
-      <button class="btn-gold" onclick="window.location.href='validate.html'">Mine $ITLG ↗</button>
+      <!-- Relative link to validate.html -->
+      <a class="btn-gold" href="validate.html">Mine $ITLG ↗</a>
     </div>
     <div style="font-size:42px">🌐</div>
   </div>
