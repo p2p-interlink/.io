@@ -3,46 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smooth InterLink | BEP20 Ecosystem</title>
+    <title>InterLink | P2P Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .purple-btn { background-color: #6C5CE7; }
+        .purple-btn:hover { background-color: #5b4cc7; }
+        .purple-text { color: #6C5CE7; }
+    </style>
 </head>
-<body class="bg-gray-900 text-white min-h-screen flex flex-col justify-between font-sans">
+<body class="bg-white text-gray-900 font-sans antialiased min-h-screen flex flex-col justify-between">
 
-    <!-- Header / Navbar -->
-    <header class="p-5 bg-gray-800 border-b border-gray-700 flex justify-between items-center">
-        <h1 class="text-2xl font-bold tracking-wide text-yellow-500">Smooth <span class="text-white text-sm">BEP20</span></h1>
-        <nav class="space-x-4">
-            <a href="index.html" class="hover:text-yellow-400 text-yellow-400 font-semibold">Home</a>
-            <a href="mine.html" class="hover:text-yellow-400">Mine $ITLG</a>
-            <a href="validate.html" class="hover:text-yellow-400">Validate</a>
-        </nav>
+    <!-- Splash Screen Loader -->
+    <div id="splashScreen" class="fixed inset-0 bg-white z-50 flex items-center justify-center transition-opacity duration-500">
+        <div class="w-28 h-28 bg-gradient-to-tr from-purple-600 to-indigo-400 rounded-3xl flex items-center justify-center shadow-lg">
+            <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="w-full px-5 py-4 flex justify-between items-center border-b border-gray-100 bg-white sticky top-0 z-40">
+        <div class="flex items-center space-x-2">
+            <div class="w-7 h-7 bg-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-xs">i</div>
+            <span class="text-xl font-extrabold tracking-tight text-gray-900">InterLínk</span>
+        </div>
+        <div class="flex items-center space-x-3">
+            <a href="mine.html" class="purple-btn text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-sm">
+                Get the app
+            </a>
+            <button class="text-gray-800 text-2xl focus:outline-none">☰</button>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <main class="flex-grow flex flex-col items-center justify-center text-center p-6">
-        <h2 class="text-4xl md:text-6xl font-extrabold mb-4">Welcome to Smooth InterLink</h2>
-        <p class="text-gray-400 max-w-xl text-lg mb-8">
-            Decentralized ecosystem running on the Binance Smart Chain (BEP20). Mine $ITLG, interact with live dashboard metrics, and manage your assets seamlessly.
-        </p>
-        <div class="flex space-x-4">
-            <a href="mine.html" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-6 rounded-xl shadow-lg transition">
-                Launch App & Mine ↗
-            </a>
-            <a href="validate.html" class="bg-gray-800 border border-gray-700 hover:bg-gray-700 font-bold py-3 px-6 rounded-xl transition">
-                Connect Wallet
-            </a>
+    <!-- Main Hero Section -->
+    <main class="flex-grow">
+        <div class="relative w-full h-[520px] bg-gray-800 text-white flex flex-col justify-end p-6 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="People using phones" class="absolute inset-0 w-full h-full object-cover opacity-60">
+            
+            <div class="absolute top-4 right-4 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-xs flex items-center space-x-1.5 text-white border border-white/20">
+                <span>🇳🇬</span>
+                <span>Onitsha, Nigeria</span>
+            </div>
+
+            <div class="relative z-10 max-w-md space-y-4 mb-6">
+                <!-- Clicking Activation badge takes user to second screen (mine.html) -->
+                <a href="mine.html" class="inline-flex items-center bg-white rounded-full px-4 py-1.5 shadow-md space-x-2 active:scale-95 transition">
+                    <span class="w-5 h-5 bg-yellow-400 rounded-full flex items-center justify-center text-xs font-bold text-white">$</span>
+                    <span class="text-xs font-bold text-emerald-600">$ITL Activate Marketplace</span>
+                </a>
+
+                <p class="text-lg font-medium leading-snug text-gray-100 drop-shadow">
+                    Activating Marketplace on your Interlink Wallet allows you to securely trade your ITG assets with other, using Interlink Escrow services
+                </p>
+
+                <div>
+                    <a href="mine.html" class="inline-block bg-gray-950 hover:bg-black text-white font-bold px-8 py-3 rounded-full text-sm shadow-lg">
+                        Download
+                    </a>
+                </div>
+            </div>
         </div>
+
+        <!-- Institutional Credibility Section -->
+        <section class="py-12 px-6 text-center space-y-4 bg-white">
+            <h3 class="text-2xl font-extrabold purple-text">Institutional Credibility</h3>
+            <p class="text-gray-900 font-bold text-base">Trusted by the world's best.</p>
+            <p class="text-xs text-gray-500 max-w-xs mx-auto">Independently verified by the institutions that define global standards.</p>
+            
+            <p class="text-[10px] font-bold text-gray-400 tracking-widest uppercase pt-4">TRUSTED BY</p>
+            
+            <div class="flex justify-center items-center space-x-4 pt-2">
+                <div class="bg-gray-50 px-4 py-2 rounded-lg border border-gray-100 text-xs font-bold text-gray-600">
+                    NEW TO THE STREET
+                </div>
+                <div class="bg-gray-50 px-4 py-2 rounded-lg border border-gray-100 text-xs font-bold text-gray-800 flex items-center space-x-1">
+                    <span class="text-orange-500 font-extrabold">aws</span> <span>startups</span>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="p-6 bg-gray-800 border-t border-gray-700 text-center text-gray-400 text-sm">
-        <div class="flex justify-center space-x-6 mb-3">
-            <a href="javascript:void(0)" class="hover:underline">Privacy Policy</a>
-            <a href="javascript:void(0)" class="hover:underline">Terms of Service</a>
-            <a href="javascript:void(0)" class="hover:underline">Cookie Policy</a>
-        </div>
-        <p>&copy; 2026 Smooth InterLink (BEP20 BSC Network). All rights reserved.</p>
-    </footer>
-
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const splash = document.getElementById('splashScreen');
+                splash.style.opacity = '0';
+                setTimeout(() => splash.style.display = 'none', 500);
+            }, 1200);
+        });
+    </script>
 </body>
 </html>
