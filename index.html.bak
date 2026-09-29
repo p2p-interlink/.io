@@ -7,35 +7,220 @@
 <meta name="description" content="A GitHub Pages-ready recreation of the p2p-interlink.com style landing page, with safe demo interactions.">
 <style>
 :root{--bg:#050806;--surface:#0b100d;--surface2:#101712;--text:#f4f7f5;--muted:#a8b3ac;--line:rgba(255,255,255,.10);--green:#b9ff3f;--green2:#72d62b;--shadow:0 24px 80px rgba(0,0,0,.45);--radius:24px;--max:1180px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}a{color:inherit;text-decoration:none}button{font:inherit}img{max-width:100%;display:block}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}.site-header{position:sticky;top:0;z-index:20;background:rgba(5,8,6,.76);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.06)}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.03em}.brand-mark{width:34px;height:34px;border:2px solid var(--green);border-radius:50%;position:relative;box-shadow:0 0 24px rgba(185,255,63,.2)}.brand-mark:before,.brand-mark:after{content:"";position:absolute;background:var(--green);border-radius:999px}.brand-mark:before{width:16px;height:2px;left:7px;top:15px;transform:rotate(45deg)}.brand-mark:after{width:16px;height:2px;left:11px;top:15px;transform:rotate(-45deg)}.nav-links{display:flex;gap:26px;color:#d5ddd7;font-size:14px}.nav-links a:hover{color:var(--green)}.nav-cta{background:var(--green);color:#071006;border:0;border-radius:999px;padding:11px 18px;font-weight:800;cursor:pointer}.menu-btn{display:none;background:none;border:1px solid var(--line);color:white;border-radius:12px;padding:9px 11px}
-.hero{padding:86px 0 50px;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;width:700px;height:500px;right:-280px;top:-160px;background:radial-gradient(circle,rgba(185,255,63,.16),transparent 64%);pointer-events:none}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid rgba(185,255,63,.24);color:var(--green);background:rgba(185,255,63,.06);padding:7px 11px;border-radius:999px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em}.hero h1{font-size:clamp(48px,7vw,86px);line-height:.94;letter-spacing:-.065em;margin:22px 0}.hero h1 span{color:var(--green)}.hero p{color:var(--muted);font-size:18px;max-width:620px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);padding:13px 18px;border-radius:13px;font-weight:800;cursor:pointer}.btn.primary{background:var(--green);color:#081007;border-color:var(--green)}.btn.secondary{background:#0b100d}.hero-card{min-height:470px;border:1px solid var(--line);background:linear-gradient(145deg,#111912,#070a08);border-radius:32px;padding:24px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero-card:after{content:"";position:absolute;width:420px;height:420px;right:-130px;bottom:-170px;border-radius:50%;background:radial-gradient(circle,rgba(185,255,63,.24),transparent 65%)}.phone{width:245px;height:425px;border:7px solid #1f2822;border-radius:36px;background:#070a08;margin:0 auto;box-shadow:0 30px 80px #000;position:relative;z-index:2;overflow:hidden}.notch{width:90px;height:24px;border-radius:0 0 18px 18px;background:#1f2822;margin:auto}.screen{padding:22px}.coin{width:62px;height:62px;border-radius:50%;border:2px solid var(--green);display:grid;place-items:center;color:var(--green);font-weight:900;margin:18px auto}.balance{font-size:30px;font-weight:900;text-align:center}.small{font-size:12px;color:var(--muted);text-align:center}.mini-row{display:flex;gap:8px;margin-top:25px}.mini-row div{flex:1;height:52px;border-radius:13px;background:#101711;border:1px solid var(--line)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}a{color:inherit;text-decoration:none}button{font:inherit}img{max-width:100%;display:block}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}.site-header{position:sticky;top:0;z-index:20;background:rgba(5,8,6,.76);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.06)}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.03em}.brand-mark{width:34px;height:34px;border:2px solid var(--green);border-radius:50%;position:relative;box-shadow:0 0 24px rgba(185,255,63,.2)}.brand-mark:before,.brand-mark:after{content:"";position:absolute;background:var(--green);border-radius:999px}.brand-mark:before{width:16px;height:2px;left:7px;top:15px;transform:rotate(45deg)}.brand-mark:after{width:16px;height:2px;left:11px;top:15px;transform:rotate(-45deg)}.nav-links{display:flex;gap:26px;color:#d5ddd7;font-size:14px}.nav-links a:hover{color:var(--green)}.nav-cta{background:var(--green);color:#071006;border:0;border-radius:999px;padding:11px 18px;font-weight:800;cursor:pointer}.menu-btn{display:none;background:none;border:1px solid var(--line);color:white;border-radius:12px;padding:9px 11px;cursor:pointer}
+.hero{padding:86px 0 50px;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;width:700px;height:500px;right:-280px;top:-160px;background:radial-gradient(circle,rgba(185,255,63,.16),transparent 64%);pointer-events:none}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid rgba(185,255,63,.24);color:var(--green);background:rgba(185,255,63,.06);padding:7px 11px;border-radius:999px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em}.hero h1{font-size:clamp(48px,7vw,86px);line-height:.94;letter-spacing:-.065em;margin:22px 0}.hero h1 span{color:var(--green)}.hero p{color:var(--muted);font-size:18px;max-width:620px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);padding:13px 18px;border-radius:13px;font-weight:800;cursor:pointer}.btn.primary{background:var(--green);color:#081007;border-color:var(--green)}.btn.secondary{background:#0b100d;color:var(--text)}.hero-card{min-height:470px;border:1px solid var(--line);background:linear-gradient(145deg,#111912,#070a08);border-radius:32px;padding:24px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero-card:after{content:"";position:absolute;width:420px;height:420px;right:-130px;bottom:-170px;border-radius:50%;background:radial-gradient(circle,rgba(185,255,63,.24),transparent 65%)}.phone{width:245px;height:425px;border:7px solid #1f2822;border-radius:36px;background:#070a08;margin:0 auto;box-shadow:0 30px 80px #000;position:relative;z-index:2;overflow:hidden}.notch{width:90px;height:24px;border-radius:0 0 18px 18px;background:#1f2822;margin:auto}.screen{padding:22px}.coin{width:62px;height:62px;border-radius:50%;border:2px solid var(--green);display:grid;place-items:center;color:var(--green);font-weight:900;margin:18px auto}.balance{font-size:30px;font-weight:900;text-align:center}.small{font-size:12px;color:var(--muted);text-align:center}.mini-row{display:flex;gap:8px;margin-top:25px}.mini-row div{flex:1;height:52px;border-radius:13px;background:#101711;border:1px solid var(--line)}
 .section{padding:92px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:32px}.section-head h2{font-size:clamp(34px,5vw,58px);letter-spacing:-.055em;line-height:1;margin:0}.section-head p{max-width:520px;color:var(--muted);margin:0}.trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 0}.trust-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.trust-item{height:70px;border:1px solid var(--line);border-radius:15px;display:grid;place-items:center;color:#8d9991;font-weight:800;letter-spacing:.08em;font-size:12px;background:#080c09}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{border:1px solid var(--line);background:linear-gradient(160deg,#0e1510,#080b09);border-radius:var(--radius);padding:22px;min-height:220px;position:relative;overflow:hidden}.card .num{font-size:12px;color:var(--green);font-weight:900}.card h3{font-size:24px;letter-spacing:-.035em;margin:55px 0 8px}.card p{color:var(--muted);font-size:14px;margin:0}.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.feature{border:1px solid var(--line);border-radius:30px;padding:34px;min-height:440px;background:linear-gradient(145deg,#111a13,#080b09);position:relative;overflow:hidden}.feature h3{font-size:42px;line-height:1;letter-spacing:-.055em;margin:18px 0}.feature p{color:var(--muted);max-width:520px}.feature ul{list-style:none;padding:0;margin:25px 0;display:grid;gap:10px}.feature li:before{content:"✓";color:var(--green);margin-right:10px;font-weight:900}.visual{position:absolute;right:-30px;bottom:-50px;width:330px;height:250px;border-radius:30px;background:radial-gradient(circle at 50% 30%,rgba(185,255,63,.22),transparent 35%),linear-gradient(135deg,#151e17,#070a08);border:1px solid var(--line);transform:rotate(-7deg)}.chain{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}.chain-copy h2{font-size:clamp(40px,5vw,64px);line-height:.96;letter-spacing:-.06em;margin:12px 0}.chain-graphic{min-height:430px;border:1px solid var(--line);border-radius:32px;background:#080c09;display:grid;place-items:center;position:relative;overflow:hidden}.orbit{width:250px;height:250px;border:1px dashed rgba(185,255,63,.4);border-radius:50%;position:relative}.orbit:before,.orbit:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.12);border-radius:50%;inset:35px}.orbit:after{inset:78px}.core{position:absolute;inset:95px;border-radius:50%;background:var(--green);color:#071006;display:grid;place-items:center;font-weight:1000;box-shadow:0 0 80px rgba(185,255,63,.28)}.blog{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.post{border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#0a0e0b}.post-art{height:190px;background:radial-gradient(circle at 30% 30%,rgba(185,255,63,.4),transparent 25%),linear-gradient(135deg,#172218,#080b09);display:grid;place-items:center;font-size:44px}.post-body{padding:22px}.post-body .date{font-size:12px;color:var(--green);font-weight:800}.post h3{font-size:21px;margin:10px 0 0}.cta{border:1px solid rgba(185,255,63,.2);background:linear-gradient(130deg,#15200f,#0b100d);border-radius:32px;padding:54px;text-align:center}.cta h2{font-size:clamp(38px,6vw,70px);line-height:.95;letter-spacing:-.06em;margin:0 auto 15px;max-width:800px}.cta p{color:var(--muted);max-width:580px;margin:0 auto}.footer{padding:70px 0 35px;border-top:1px solid var(--line);margin-top:90px}.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:35px}.footer h4{margin:0 0 14px}.footer a,.footer p{color:var(--muted);font-size:14px;display:block;margin:8px 0}.copyright{border-top:1px solid var(--line);margin-top:45px;padding-top:22px;color:#758079;font-size:13px;display:flex;justify-content:space-between;gap:20px}.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;place-items:center;z-index:50;padding:20px}.modal.open{display:grid}.modal-box{width:min(520px,100%);background:#0b100d;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:var(--shadow)}.modal-box h3{font-size:30px;margin:0 0 8px}.modal-box p{color:var(--muted)}.modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}
-@media(max-width:900px){.nav-links{display:none}.menu-btn{display:block}.hero-grid,.chain,.feature-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.trust-grid{grid-template-columns:repeat(3,1fr)}.blog{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}.hero{padding-top:55px}}
-@media(max-width:580px){.wrap{width:min(var(--max),calc(100% - 28px))}.nav{height:68px}.nav-cta{display:none}.hero h1{font-size:53px}.cards,.blog,.trust-grid,.footer-grid{grid-template-columns:1fr}.section{padding:68px 0}.feature{padding:25px;min-height:390px}.feature h3{font-size:34px}.cta{padding:35px 22px}.copyright{flex-direction:column}.hero-card{min-height:440px}.phone{transform:scale(.9)}}
+
+/* Clean mobile nav override class */
+@media(max-width:900px){
+  .nav-links{display:none}
+  .nav-links.mobile-open{
+    display:flex;position:absolute;top:76px;left:14px;right:14px;padding:20px;
+    background:#0b100d;border:1px solid rgba(255,255,255,.1);border-radius:18px;flex-direction:column;gap:16px;
+  }
+  .menu-btn{display:block}
+  .hero-grid,.chain,.feature-grid{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr 1fr}
+  .trust-grid{grid-template-columns:repeat(3,1fr)}
+  .blog{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .hero{padding-top:55px}
+}
+@media(max-width:580px){
+  .wrap{width:min(var(--max),calc(100% - 28px))}
+  .nav{height:68px}
+  .nav-cta{display:none}
+  .hero h1{font-size:53px}
+  .cards,.blog,.trust-grid,.footer-grid{grid-template-columns:1fr}
+  .section{padding:68px 0}
+  .feature{padding:25px;min-height:390px}
+  .feature h3{font-size:34px}
+  .cta{padding:35px 22px}
+  .copyright{flex-direction:column}
+  .hero-card{min-height:440px}
+  .phone{transform:scale(.9)}
+}
 </style>
 </head>
 <body>
-<header class="site-header"><div class="wrap nav"><a class="brand" href="#top"><span class="brand-mark"></span><span>InterLink</span></a><nav class="nav-links"><a href="#about">About</a><a href="#ecosystem">Ecosystem</a><a href="#blog">Blog</a><a href="#community">Community</a></nav><button class="nav-cta" data-modal>Get the app</button><button class="menu-btn" id="menuBtn">☰</button></div></header>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="#top"><span class="brand-mark"></span><span>InterLink</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#ecosystem">Ecosystem</a>
+      <a href="#blog">Blog</a>
+      <a href="#community">Community</a>
+    </nav>
+    <button class="nav-cta" data-modal>Get the app</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle Navigation Menu">☰</button>
+  </div>
+</header>
 <main id="top">
-<section class="hero"><div class="wrap hero-grid"><div><span class="eyebrow">Human-centric digital network</span><h1>Digital assets.<br><span>Made simple.</span></h1><p>Explore a modern P2P and digital-asset experience designed for everyday users. This GitHub-ready demo recreates the visual structure of the referenced site without collecting recovery phrases or private keys.</p><div class="actions"><a class="btn primary" href="#ecosystem">Explore ecosystem</a><button class="btn secondary" data-modal>Activate marketplace</button></div></div><div class="hero-card"><div class="phone"><div class="notch"></div><div class="screen"><div class="coin">IL</div><div class="balance">500.00</div><div class="small">Available demo balance</div><div class="mini-row"><div></div><div></div></div><div style="height:90px;border:1px solid var(--line);border-radius:14px;margin-top:12px"></div></div></div></div></div></section>
-<section class="trust"><div class="wrap trust-grid"><div class="trust-item">OPEN NETWORK</div><div class="trust-item">EVM READY</div><div class="trust-item">P2P MARKET</div><div class="trust-item">NON-CUSTODIAL</div><div class="trust-item">COMMUNITY</div></div></section>
-<section class="section" id="about"><div class="wrap"><div class="section-head"><h2>Built around<br>real users.</h2><p>A polished front-end foundation for a digital-asset brand. Replace the demo content with your verified company information, real partner logos, and production integrations.</p></div><div class="cards"><article class="card"><span class="num">01</span><h3>Free to start</h3><p>Simple onboarding with clear calls to action and no hardware requirement.</p></article><article class="card"><span class="num">02</span><h3>Mobile first</h3><p>Responsive layouts that work cleanly on phones, tablets and desktop screens.</p></article><article class="card"><span class="num">03</span><h3>P2P ready</h3><p>A marketplace interface can be connected to a real backend and escrow service later.</p></article><article class="card"><span class="num">04</span><h3>Privacy focused</h3><p>Demo wallet actions never ask for seed phrases or private keys.</p></article></div></div></section>
-<section class="section" id="ecosystem"><div class="wrap"><div class="section-head"><h2>The ecosystem.</h2><p>Three core product surfaces inspired by the referenced site's structure.</p></div><div class="feature-grid"><article class="feature"><span class="eyebrow">01 · App</span><h3>Digital assets for everyone.</h3><p>Present your mobile experience with a clear product story, simple benefits and a strong download CTA.</p><ul><li>Free to start</li><li>Mobile-first experience</li><li>Community driven</li><li>Simple onboarding</li></ul><div class="visual"></div></article><article class="feature"><span class="eyebrow">02 · Wallet</span><h3>Your gateway to Web3.</h3><p>A wallet section for balances, payments, swaps and DApp access. Production wallet functionality requires audited infrastructure.</p><ul><li>Multi-chain interface</li><li>Asset management</li><li>Transaction history</li><li>Secure signing</li></ul><div class="visual"></div></article></div></div></section>
-<section class="section"><div class="wrap chain"><div class="chain-copy"><span class="eyebrow">03 · InterLink Chain</span><h2>Infrastructure for the next billion users.</h2><p style="color:var(--muted);max-width:600px">A dedicated section for explaining your chain architecture, settlement, payments and tokenized assets without making unverified performance or institutional claims.</p><div class="actions"><a class="btn primary" href="#community">Learn more</a><a class="btn secondary" href="#blog">Read updates</a></div></div><div class="chain-graphic"><div class="orbit"><div class="core">IL</div></div></div></div></section>
-<section class="section" id="community"><div class="wrap"><div class="cta"><h2>Start building your digital-asset community.</h2><p>Connect this front end to your own authentication, marketplace, wallet, analytics and API infrastructure when you're ready.</p><div class="actions" style="justify-content:center"><button class="btn primary" data-modal>Get started</button><a class="btn secondary" href="#top">Back to top</a></div></div></div></section>
-<section class="section" id="blog"><div class="wrap"><div class="section-head"><h2>Latest releases.</h2><p>Demo editorial cards matching the original page's content rhythm.</p></div><div class="blog"><article class="post"><div class="post-art">↗</div><div class="post-body"><span class="date">DEMO · SEP 2026</span><h3>Building a trustworthy P2P marketplace</h3></div></article><article class="post"><div class="post-art">◎</div><div class="post-body"><span class="date">DEMO · SEP 2026</span><h3>What a modern wallet experience needs</h3></div></article><article class="post"><div class="post-art">✦</div><div class="post-body"><span class="date">DEMO · SEP 2026</span><h3>Designing Web3 for everyday users</h3></div></article></div></div></section>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Human-centric digital network</span>
+      <h1>Digital assets.<br><span>Made simple.</span></h1>
+      <p>Explore a modern P2P and digital-asset experience designed for everyday users. Safe demo interactions for front-end integration.</p>
+      <div class="actions">
+        <a class="btn primary" href="#ecosystem">Explore ecosystem</a>
+        <button class="btn secondary" data-modal>Activate marketplace</button>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="screen">
+          <div class="coin">IL</div>
+          <div class="balance">500.00</div>
+          <div class="small">Available demo balance</div>
+          <div class="mini-row"><div></div><div></div></div>
+          <div style="height:90px;border:1px solid var(--line);border-radius:14px;margin-top:12px"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="trust">
+  <div class="wrap trust-grid">
+    <div class="trust-item">OPEN NETWORK</div>
+    <div class="trust-item">EVM READY</div>
+    <div class="trust-item">P2P MARKET</div>
+    <div class="trust-item">NON-CUSTODIAL</div>
+    <div class="trust-item">COMMUNITY</div>
+  </div>
+</section>
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Built around<br>real users.</h2>
+      <p>A polished front-end foundation for a digital-asset brand. Connect with your verified company details and API endpoints.</p>
+    </div>
+    <div class="cards">
+      <article class="card"><span class="num">01</span><h3>Free to start</h3><p>Simple onboarding with clear calls to action and no hardware requirement.</p></article>
+      <article class="card"><span class="num">02</span><h3>Mobile first</h3><p>Responsive layouts that work cleanly on phones, tablets, and desktop screens.</p></article>
+      <article class="card"><span class="num">03</span><h3>P2P ready</h3><p>A marketplace interface built to connect with backend escrow services.</p></article>
+      <article class="card"><span class="num">04</span><h3>Privacy focused</h3><p>Non-custodial designs that safeguard user keys and privacy.</p></article>
+    </div>
+  </div>
+</section>
+<section class="section" id="ecosystem">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>The ecosystem.</h2>
+      <p>Three core product surfaces inspired by modern digital asset platforms.</p>
+    </div>
+    <div class="feature-grid">
+      <article class="feature">
+        <span class="eyebrow">01 · App</span>
+        <h3>Digital assets for everyone.</h3>
+        <p>Present your mobile experience with a clear product story, simple benefits, and strong conversion CTAs.</p>
+        <ul><li>Free to start</li><li>Mobile-first experience</li><li>Community driven</li><li>Simple onboarding</li></ul>
+        <div class="visual"></div>
+      </article>
+      <article class="feature">
+        <span class="eyebrow">02 · Wallet</span>
+        <h3>Your gateway to Web3.</h3>
+        <p>A multi-chain wallet section for managing balances, tokens, transfers, and decentralized applications.</p>
+        <ul><li>Multi-chain interface</li><li>Asset management</li><li>Transaction history</li><li>Secure signing</li></ul>
+        <div class="visual"></div>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap chain">
+    <div class="chain-copy">
+      <span class="eyebrow">03 · InterLink Chain</span>
+      <h2>Infrastructure for the next billion users.</h2>
+      <p style="color:var(--muted);max-width:600px">Explore custom settlement, speed, and cross-chain bridging built on Binance Smart Chain / EVM networks.</p>
+      <div class="actions">
+        <a class="btn primary" href="#community">Learn more</a>
+        <a class="btn secondary" href="#blog">Read updates</a>
+      </div>
+    </div>
+    <div class="chain-graphic"><div class="orbit"><div class="core">IL</div></div></div>
+  </div>
+</section>
+<section class="section" id="community">
+  <div class="wrap">
+    <div class="cta">
+      <h2>Start building your digital-asset community.</h2>
+      <p>Connect this front-end to your custom Web3 APIs, auth systems, or BEP20 smart contracts.</p>
+      <div class="actions" style="justify-content:center">
+        <button class="btn primary" data-modal>Get started</button>
+        <a class="btn secondary" href="#top">Back to top</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="blog">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Latest releases.</h2>
+      <p>Editorial updates and community notes.</p>
+    </div>
+    <div class="blog">
+      <article class="post"><div class="post-art">↗</div><div class="post-body"><span class="date">DEMO · SEP 2026</span><h3>Building a trustworthy P2P marketplace</h3></div></article>
+      <article class="post"><div class="post-art">◎</div><div class="post-body"><span class="date">DEMO · SEP 2026</span><h3>What a modern wallet experience needs</h3></div></article>
+      <article class="post"><div class="post-art">✦</div><div class="post-body"><span class="date">DEMO · SEP 2026</span><h3>Designing Web3 for everyday users</h3></div></article>
+    </div>
+  </div>
+</section>
 </main>
-<footer class="footer"><div class="wrap"><div class="footer-grid"><div><a class="brand" href="#top"><span class="brand-mark"></span><span>InterLink</span></a><p style="max-width:300px;margin-top:18px">GitHub Pages-ready front-end demo inspired by the public structure of p2p-interlink.com.</p></div><div><h4>About</h4><a href="#about">About us</a><a href="#ecosystem">Ecosystem</a><a href="#blog">Blog</a></div><div><h4>Resource</h4><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookie policy</a></div><div><h4>Community</h4><a href="#community">Community</a><a href="#">Creator</a><a href="#">Ambassador</a></div></div><div class="copyright"><span>© 2026 InterLink demo. Replace with your own legal entity.</span><span>Built for GitHub Pages</span></div></div></footer>
-<div class="modal" id="modal"><div class="modal-box"><h3>Marketplace demo</h3><p>This front-end demo does not request, store, or transmit wallet recovery phrases, private keys, or payment credentials. Connect a real backend only after implementing proper authentication, escrow and security controls.</p><div class="modal-actions"><button class="btn secondary" id="closeModal">Close</button><a class="btn primary" href="#ecosystem" id="continueBtn">Continue</a></div></div></div>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="#top"><span class="brand-mark"></span><span>InterLink</span></a>
+        <p style="max-width:300px;margin-top:18px">Front-end website built for deployment on GitHub Pages.</p>
+      </div>
+      <div><h4>About</h4><a href="#about">About us</a><a href="#ecosystem">Ecosystem</a><a href="#blog">Blog</a></div>
+      <div><h4>Resource</h4><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookie policy</a></div>
+      <div><h4>Community</h4><a href="#community">Community</a><a href="#">Creator</a><a href="#">Ambassador</a></div>
+    </div>
+    <div class="copyright">
+      <span>© 2026 InterLink. All rights reserved.</span>
+      <span>Built for GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Modal Box -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <h3>Marketplace demo</h3>
+    <p>This front-end demo does not request, store, or transmit wallet recovery phrases or private keys. Connect a real backend after implementing authentication and security controls.</p>
+    <div class="modal-actions">
+      <button class="btn secondary" id="closeModal">Close</button>
+      <a class="btn primary" href="#ecosystem" id="continueBtn">Continue</a>
+    </div>
+  </div>
+</div>
+
 <script>
-const modal=document.getElementById('modal');
-document.querySelectorAll('[data-modal]').forEach(b=>b.addEventListener('click',()=>modal.classList.add('open')));
-document.getElementById('closeModal').addEventListener('click',()=>modal.classList.remove('open'));
-modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open')});
-document.getElementById('continueBtn').addEventListener('click',()=>modal.classList.remove('open'));
-const menuBtn=document.getElementById('menuBtn'); const nav=document.querySelector('.nav-links');
-menuBtn.addEventListener('click',()=>{nav.style.display=nav.style.display==='flex'?'none':'flex';nav.style.position='absolute';nav.style.top='68px';nav.style.left='14px';nav.style.right='14px';nav.style.padding='18px';nav.style.background='#0b100d';nav.style.border='1px solid rgba(255,255,255,.1)';nav.style.borderRadius='18px';nav.style.flexDirection='column'});
-document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{if(innerWidth<901)nav.style.display='none'}));
+// Modal toggle logic
+const modal = document.getElementById('modal');
+document.querySelectorAll('[data-modal]').forEach(btn => btn.addEventListener('click', () => modal.classList.add('open')));
+document.getElementById('closeModal').addEventListener('click', () => modal.classList.remove('open'));
+document.getElementById('continueBtn').addEventListener('click', () => modal.classList.remove('open'));
+modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
+
+// Mobile Menu toggle via CSS class
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+
+menuBtn.addEventListener('click', () => {
+  navLinks.classList.toggle('mobile-open');
+});
+
+document.querySelectorAll('#navLinks a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('mobile-open');
+  });
+});
 </script>
 </body>
 </html>
+
